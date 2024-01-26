@@ -1,32 +1,79 @@
-# React + TypeScript + Vite
+# React Todo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+<img height=400 width=400 src="https://f005.backblazeb2.com/file/debbuggers/_5fb31048-ccbf-4d65-b573-8ec26fd23007.jpg" alt="exemplo imagem">
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Um monte de coisas pra fazer? que tal listar tudo e assumir o contole?
 
-- Configure the top-level `parserOptions` property like this:
+### Ajustes e melhorias
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
+
+- [ ] Implementar Sistema de login
+- [ ] Responsividade
+- [ ] Testes Unitários
+- [ ] Upgrade visual
+
+## 💻 Pré-requisitos
+
+Antes de começar, verifique se você atendeu aos seguintes requisitos:
+
+* Você instalou a versão mais recente de `Nodejs`
+* Você tem uma máquina `Windows ou Linux`.
+
+## 🚀 Instalando React TODO
+
+Para instalar, siga estas etapas:
+
+```
+  - clone o repositório
+  - vá para a raiz do diretório
+  - npm i para instalar as dependencias
+  - npm run start para executar o projeto
+
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# react-todo
-todo list to sharp my skills in reactjs + styledcomponents
+## ☕ Usando React TODO
+
+Para usar, siga estas etapas:
+
+```
+  - Insira o texto da proxima tarefa. (ex: lavar louça)
+  - Pressione Enter
+  - A tarefa será registrada e aparecerá como pendente em lista abaixo do campo de texto
+  - Ao executar, clique sobre a tarefa e o status será alterado para "feito"
+```
+
+Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Fornece uma referência de opções para pontos de bônus!
+
+## 📫 Contribuindo para React TODO
+Para contribuir com React Todo, siga estas etapas:
+
+1. Fork este repositório.
+2. Crie um branch: `git checkout -b <nome_branch>`.
+3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
+4. Envie para o branch original: `git push origin <nome_do_projeto> / <local>`
+5. Crie a solicitação de pull.
+
+Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+
+## 🤝 Desenvolvido por:
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/u/60834135" alt="Foto de Rafael David" width=115><br>
+        <sub>
+          <b>Rafael David</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
