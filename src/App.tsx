@@ -1,7 +1,7 @@
-import { FormEvent, MouseEventHandler, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { TodoService } from './service'
 import { Task } from './service'
+import {v4 as uuid} from 'uuid';
 
 // const Button = styled.button`
 //   color: #BF4F74;
@@ -64,26 +64,40 @@ const Form = styled.form`
   align-items: center;
   width: 100%;
 `
-let id = 1;
-
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [task, setTask] = useState<Task>({ id: id++, message: '', status: false});
+  const [
+    task, 
+    setTask
+  ] = useState<Task>({ 
+    id: uuid(), 
+    message: '', 
+    status: false
+  });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if(task.message){
-      setTasks([...tasks, {id: id++, message: task.message, status: false}])
+      let newTasks = [...tasks, {id: uuid(), message: task.message, status: false}]
+      setTasks(newTasks);
+      localStorage.setItem('tasks', JSON.stringify(newTasks));
+
     }
-    setTask({id:id++, message: '', status: false})
+    setTask({id:uuid(), message: '', status: false});
+  }
+
+  const handleTodoDelete = ( taskId: string) => {
+    let taskList = tasks.filter((task) => task.id !== taskId);
+    setTasks(taskList);
+    localStorage.setItem('tasks', JSON.stringify(taskList));
   }
 
   const handleTodoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let message = e.target.value;
-    setTask({ id: id++, message, status: false })
+    setTask({ id: uuid(), message, status: false })
   }
 
-  const changeStatus = (id: number) => {
+  const changeStatus = (id: string) => {
     let task = tasks.find((task) => task.id === id);
     if(task){
       task.message = "abuble"
@@ -91,12 +105,24 @@ function App() {
     }
   } 
 
+  useEffect(()=>{
+    
+    let tasks = localStorage.getItem('tasks');
+    
+    if(tasks){
+      const localTasks: Task[] = JSON.parse(tasks);
+      setTasks(localTasks);
+    }
+
+  }, [])
+
   return (
     <>
       <HomeContainer>
         <Form onSubmit={handleSubmit} >
           <InputField type="text" 
                       name='task'
+                      value={task.message}
                       onChange={(e) => handleTodoChange(e)} />
           <button type="submit">
             <i className="fa-regular fa-xl fa-paper-plane"></i>
@@ -116,11 +142,16 @@ function App() {
           <tbody>
             {
               tasks.map((task) => (
-                <TableColumn key={task.id}
-                             onClick={() => changeStatus(task.id)}>
+                <TableColumn key={task.id}>
                   <td>{task.message}</td>
                   <td></td>
                   <td>{task.status ? "Feito" : "Pendente"}</td>
+                  <td></td>
+                  <td>
+                    <button onClick={
+                      () => handleTodoDelete(task.id)
+                    }>Done</button>
+                  </td>
                 </TableColumn>
               ))
             }
