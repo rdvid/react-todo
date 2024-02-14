@@ -2,6 +2,17 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Task } from './service'
 import {v4 as uuid} from 'uuid';
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from '@chakra-ui/react'
 
 // const Button = styled.button`
 //   color: #BF4F74;
@@ -27,10 +38,19 @@ import {v4 as uuid} from 'uuid';
 //   font-size: 1.2rem;
 // `;
 
+// const Table = styled.table`
+//   margin: 4%;
+//   width: 50%;
+// `
+// const TableColumn = styled.tr`
+//   text-align: left;
+// `
+
+
 const HomeContainer = styled.div`
   font-family: arial;
   font-size: 20px;
-  margin: 12px;
+  margin: 60px;
   width: 100vw;
   height: 100vh;
   /* Center child horizontally*/
@@ -51,13 +71,6 @@ const InputField = styled.input`
   shadow: 0 3px 3px rgba(0, 0, 0, 0.05);
 `
 
-const Table = styled.table`
-  margin: 4%;
-  width: 50%;
-`
-const TableColumn = styled.tr`
-  text-align: left;
-`
 const Form = styled.form`
   display: flex;
   justify-content: center;
@@ -131,32 +144,39 @@ function App() {
                  value="Submit" 
                  onClick={(e) => handleSubmit(e)}/> */}
         </Form>
-        <Table>
-          <thead>
-            <TableColumn>
-              <th>Task</th>
-              <th></th>
-              <th>Status</th>
-            </TableColumn>
-          </thead>
-          <tbody>
-            {
-              tasks.map((task) => (
-                <TableColumn key={task.id}>
-                  <td>{task.message}</td>
-                  <td></td>
-                  <td>{task.status ? "Feito" : "Pendente"}</td>
-                  <td></td>
-                  <td>
-                    <button onClick={
-                      () => handleTodoDelete(task.id)
-                    }>Done</button>
-                  </td>
-                </TableColumn>
-              ))
-            }
-          </tbody>
-        </Table>
+        
+          <TableContainer>
+            <Table variant='striped' colorScheme='teal'>
+              <TableCaption>That's all folks!</TableCaption>
+              <Thead>
+                <Tr>
+                  <Th>Todo</Th>
+                  <Th>Status</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                {
+                  tasks.map((task) => (
+                    <Tr key={task.id}>
+                      <Td>{task.message}</Td>
+                      <Td>{task.status}</Td>
+                    </Tr>
+                  ))
+                }
+                
+              </Tbody>
+              {/* <Tfoot>
+                <Tr>
+                  <Th>To convert</Th>
+                  <Th>into</Th>
+                  <Th isNumeric>multiply by</Th>
+                </Tr>
+              </Tfoot> */}
+            </Table>
+          
+          </TableContainer>         
+        
+
       </HomeContainer>
     </>
   )
